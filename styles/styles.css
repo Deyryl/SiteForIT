@@ -1,0 +1,148 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-size: 20px;
+}
+
+.wrapper{
+   min-height: 100%;
+}
+
+h2{
+    font-size: 22px;
+}
+
+header{
+    width: 100%;
+    height: 160px;
+    background-color: #009A6E;
+    margin: 0px;
+}
+.header-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+    width: 100%;
+    background-color: #009A6E;
+    color: white;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.logo{
+    width: 144px;
+    height: 144px;
+    margin-right: 40px;
+}
+
+.menu{
+    margin-right: 40px;
+}
+
+.menu:link, .menu:visited{
+    text-decoration: none;
+    color: white;
+}
+
+.menu:hover{
+    color: rgb(204, 204, 204);
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.main-container{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 40px;
+    max-width: 832px;
+    width: 100%;
+    height: 100%;
+}
+
+.main-text{
+    text-align: justify;
+}
+
+#about-text{
+    vertical-align: middle;
+}
+
+.prospects{
+    margin: 0px;
+    margin-top: 4px;
+}
+
+#prospects-h2{
+    margin-bottom: 4px;
+}
+
+.main-image{
+    width: 216px;
+    border: 4px solid #009A6E;
+    border-radius: 8px;
+}
+
+#pic1{
+    float:left;
+    margin-right: 16px;
+}
+
+#pic2{
+    float: right;
+    margin-top: 48px;
+    margin-left: 16px;
+}
+
+footer{
+    background-color: #009A6E;
+    width: 100%;
+}
+
+.footer-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+}
+
+.footer-content {
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    color: white;
+}
+
+.contacts {
+    font-size: 22px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contact-item {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.contact-item a {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
