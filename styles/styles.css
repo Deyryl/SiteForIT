@@ -19,6 +19,9 @@ h2{
 }
 
 header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 160px;
     background-color: #009A6E;
@@ -26,23 +29,21 @@ header{
 }
 .header-container{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 160px;
     max-width: 832px;
     width: 100%;
-    margin: auto;
     color: white;
 }
 
 .logo{
     width: 144px;
     height: 144px;
-    margin-right: 40px;
 }
 
-.menu{
-    margin-right: 40px;
+.header-container nav{
+    
 }
 
 .menu:link, .menu:visited{
@@ -66,10 +67,14 @@ main{
     justify-content: center;
     box-sizing: border-box;
     margin: 0px;
-    padding: 40px;
+    padding: 40px 0px;
     max-width: 832px;
     width: 100%;
     height: 100%;
+}
+
+.main-container h2{
+    text-align: justify;
 }
 
 .main-text{
