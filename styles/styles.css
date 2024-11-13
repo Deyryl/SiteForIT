@@ -3,15 +3,16 @@
     padding: 0px;
 }
 
-.wrapper{
-    background-color: white;
-    min-height: 100%;
-    width: 100%;
-}
-
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
     font-size: 20px;
+}
+
+.wrapper{
+   min-height: 100%;
 }
 
 h2{
@@ -24,15 +25,16 @@ header{
     background-color: #009A6E;
     margin: 0px;
 }
-
 .header-container{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 160px;
-    max-width: 832px;
     width: 100%;
+    background-color: #009A6E;
     color: white;
+    margin-left: 0px;
+    padding-left: 0px;
 }
 
 .logo{
