@@ -3,14 +3,14 @@
     padding: 0;
 }
 
-body {
+body{
     font-family: Arial, sans-serif;
     background-color: white;
     font-size: 20px;
+    min-height: 100vh;
 }
 
 .wrapper{
-   min-height: 100%;
    width: 100%;
 }
 
@@ -42,10 +42,6 @@ header{
     height: 144px;
 }
 
-.header-container nav{
-    
-}
-
 .menu:link, .menu:visited{
     text-decoration: none;
     color: white;
@@ -75,23 +71,20 @@ main{
 
 .main-container h2{
     text-align: justify;
+    margin: 12px 0px;
 }
 
 .main-text{
     text-align: justify;
 }
 
-#about-text{
-    vertical-align: middle;
+.main-text ul{
+    padding-left: 20px;
 }
 
 .prospects{
     margin: 0px;
     margin-top: 4px;
-}
-
-#prospects-h2{
-    margin-bottom: 4px;
 }
 
 .main-image{
