@@ -7,11 +7,15 @@ body{
     font-family: Arial, sans-serif;
     background-color: white;
     font-size: 20px;
-    min-height: 100vh;
+    line-height: 25px;
+    height: 100%;
 }
 
 .wrapper{
-   width: 100%;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   overflow: hidden;
 }
 
 h2{
@@ -25,11 +29,11 @@ header{
     width: 100%;
     height: 160px;
     background-color: #009A6E;
-    margin: 0px;
 }
-.header-container{
+
+.header-container, .footer-container{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 160px;
     max-width: 832px;
@@ -42,6 +46,10 @@ header{
     height: 144px;
 }
 
+.header-container a{
+    margin: 30px;
+}
+
 .menu:link, .menu:visited{
     text-decoration: none;
     color: white;
@@ -52,25 +60,23 @@ header{
 }
 
 main{
-    display: flex;
-    justify-content: center;
+    margin: 0 auto;
 }
 
 .main-container{
     display: flex;
     flex: 1;
     flex-direction: column;
-    justify-content: center;
     box-sizing: border-box;
-    margin: 0px;
-    padding: 40px 0px;
+    padding: 20px 0px;
+    padding-bottom: 32px;
     max-width: 832px;
     width: 100%;
     height: 100%;
 }
 
 .main-container h2{
-    text-align: justify;
+    text-align: center;
     margin: 12px 0px;
 }
 
@@ -79,7 +85,11 @@ main{
 }
 
 .main-text ul{
-    padding-left: 20px;
+    padding-left: 16px;
+}
+
+#main-text-2{
+    margin-top: 30px;
 }
 
 .prospects{
@@ -90,7 +100,7 @@ main{
 .main-image{
     width: 216px;
     border: 4px solid #009A6E;
-    border-radius: 8px;
+    border-radius: 16px;
 }
 
 #pic1{
@@ -100,20 +110,17 @@ main{
 
 #pic2{
     float: right;
-    margin-top: 48px;
     margin-left: 16px;
 }
 
 footer{
-    background-color: #009A6E;
-    width: 100%;
-}
-
-.footer-container{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     height: 160px;
+    background-color: #009A6E;
+    margin-top: auto;
 }
 
 .footer-content {
@@ -141,4 +148,32 @@ footer{
 
 .contact-item a:hover {
     text-decoration: underline;
+}
+
+/*specializations*/
+.spec-blocks{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.spec-blocks img{
+    border: 4px solid #009A6E;
+    border-radius: 16px;
+    margin: 6px;
+}
+
+/*contacts*/
+.contact-block{
+    background-color: #00AC7B;
+    width: 290px;
+    height: 80px;
+    border: 4px solid #009A6E;
+    border-radius: 16px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.contact-block span{
+    color: white;
 }
