@@ -164,16 +164,21 @@ footer{
 }
 
 /*contacts*/
+.contacts-blocks{
+}
+
 .contact-block{
+    color: white;
+    float: left;
     background-color: #00AC7B;
     width: 290px;
     height: 80px;
     border: 4px solid #009A6E;
     border-radius: 16px;
     text-align: center;
-    vertical-align: middle;
+    margin: 10px;
 }
 
 .contact-block span{
-    color: white;
+    font-weight: bold;
 }
