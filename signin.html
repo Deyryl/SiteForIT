@@ -25,23 +25,22 @@
 
             <main>
                 <div class="main-container">
-                    <div class="main-text">
-                        <h2>Требуется дополнительная информация? Напишите нам!</h2>
-                    </div>
-                    <div class="contacts-blocks">
-                        <div class="contact-block">
-                            <span>Контактный телефон</span><br />+7 (812) 495-76-20
-                        </div>
-                        <div class="contact-block">
-                            <span>Электронная почта</span><br />admission@voenmeh.ru
-                        </div>
-                        <div class="contact-block">
-                            <span>Адрес главного корпуса</span><br />Санкт-Петербург,<br />ул. 1-я Красноармейская, д.1
-                        </div>
-                        <div class="contact-block">
-                            <span>Лабораторный корпус</span><br />Санкт-Петербург,<br />ул. 1-я Красноармейская, д. 13
-                        </div>
-                    </div>
+                    <form id="login-form" class="interactive-form">
+                        <h2>Вход</h2>
+                        <label for="username">Логин:</label>
+                        <input type="text" id="username" name="username" required>
+                        <label for="password">Пароль:</label>
+                        <input type="password" id="password" name="password" required>
+                        <button type="submit">Войти</button>
+                    </form>
+                    <form id="register-form" class="interactive-form">
+                        <h2>Регистрация</h2>
+                        <label for="username">Логин:</label>
+                        <input type="text" id="username" name="username" required>
+                        <label for="password">Пароль:</label>
+                        <input type="password" id="password" name="password" required>
+                        <button type="submit">Регистрация</button>
+                    </form>
                 </div>
             </main>
 
