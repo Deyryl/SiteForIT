@@ -4,13 +4,14 @@
         <meta charset="utf-8">
         <meta name="description" content="Кафедра О7 БГТУ ВОЕНМЕХ контактная информация">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Вход в аккаунт</title>
         <link rel="stylesheet" href="styles/styles.css">
-        <script src="js/main.js"></script>
     </head>
     <body>
         <div class="wrapper">
             <header>
                 <a id="signin" href="signin.html">Вход</a>
+                <a id="logout" href="#" style="display: none;">Выход</a>
                 <div class="header-container">
                     <div class="logo">
                         <img src="src/logo.svg" alt="Лого">
@@ -27,19 +28,10 @@
                 <div class="main-container">
                     <form id="login-form" class="interactive-form">
                         <h2>Вход</h2>
-                        <label for="username">Логин:</label>
-                        <input type="text" id="username" name="username" required>
-                        <label for="password">Пароль:</label>
-                        <input type="password" id="password" name="password" required>
+                        <input type="text" id="username" name="username" placeholder="Логин" required>
+                        <input type="password" id="password" name="password" placeholder="Пароль" required>
                         <button type="submit">Войти</button>
-                    </form>
-                    <form id="register-form" class="interactive-form">
-                        <h2>Регистрация</h2>
-                        <label for="username">Логин:</label>
-                        <input type="text" id="username" name="username" required>
-                        <label for="password">Пароль:</label>
-                        <input type="password" id="password" name="password" required>
-                        <button type="submit">Регистрация</button>
+                        <p>Еще нет аккаунта? Регистрация <a href="singup.html" class="">тут</a></p>
                     </form>
                 </div>
             </main>
@@ -55,5 +47,6 @@
                 </div>
             </footer>
         </div>
+        <script src="js/sign.js"></script>
     </body>
 </html>
