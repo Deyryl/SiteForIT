@@ -8,8 +8,33 @@ document.addEventListener('DOMContentLoaded', () => {
         return emailRegex.test(email);
     }
 
-    subscribeForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Предотвращаем перезагрузку страницы
+    async function subscribeToNews(email) {
+        try {
+            const formData = new FormData();
+            formData.append('email', email);
+
+            const response = await fetch('/php/subscribe.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+            
+            responseDiv.textContent = result.message;
+            responseDiv.style.color = result.success ? 'green' : 'red';
+
+            if (result.success) {
+                emailInput.value = ''; // Очищаем поле ввода при успешной подписке
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            responseDiv.textContent = 'Произошла ошибка при подписке. Пожалуйста, попробуйте позже.';
+            responseDiv.style.color = 'red';
+        }
+    }
+
+    subscribeForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
         const email = emailInput.value.trim();
 
@@ -19,19 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Сохраняем подписчика в локальном хранилище
-        let subscribers = JSON.parse(localStorage.getItem('subscribers')) || [];
-        if (subscribers.includes(email)) {
-            responseDiv.textContent = 'Вы уже подписаны на новости!';
-            responseDiv.style.color = 'orange';
-        } else {
-            subscribers.push(email);
-            localStorage.setItem('subscribers', JSON.stringify(subscribers));
-
-            responseDiv.textContent = 'Спасибо за подписку на новости!';
-            responseDiv.style.color = 'green';
-        }
-
-        emailInput.value = '';
+        await subscribeToNews(email);
     });
 });

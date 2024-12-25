@@ -1,97 +1,130 @@
-function loginUser(username, password) {
-    const users = JSON.parse(localStorage.getItem('users')) || {};
-
-    if (!users[username]) {
-        alert('Пользователь с таким логином не найден!');
-        return false;
-    }
-    if (users[username] !== password) {
-        alert('Неверный пароль!');
-        return false;
-    }
-
-    // Устанавливаем статус входа в localStorage
-    localStorage.setItem('isLoggedIn', 'true');
-    alert(`Добро пожаловать, ${username}!`);
-    return true;
-}
-
-function registerUser(username, password, repeatPassword) {
-    const users = JSON.parse(localStorage.getItem('users')) || {};
-
-    if (users[username]) {
-        alert('Пользователь с таким логином уже существует!');
-        return false;
-    }
-
-    if (password !== repeatPassword) {
-        alert('Пароли не совпадают!');
-        return false;
-    }
-
-    users[username] = password;
-    localStorage.setItem('users', JSON.stringify(users));
-    alert('Регистрация прошла успешно! Теперь вы можете войти.');
-    return true;
-}
-
-const loginForm = document.getElementById('login-form');
-if (loginForm) {
-    loginForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // Предотвращаем перезагрузку страницы
-
-        const username = loginForm.username.value.trim();
-        const password = loginForm.password.value.trim();
-
-        if (loginUser(username, password)) {
-            window.location.href = 'index.html';
+async function checkAuthStatus() {
+    try {
+        const response = await fetch('/php/check_auth.php');
+        const data = await response.json();
+        
+        const signinButton = document.getElementById('signin');
+        const logoutButton = document.getElementById('logout');
+        
+        if (data.isLoggedIn) {
+            signinButton.style.display = 'none';
+            logoutButton.style.display = 'inline';
+        } else {
+            signinButton.style.display = 'inline';
+            logoutButton.style.display = 'none';
         }
-    });
-}
-
-// Обработчик для формы регистрации
-const registrationForm = document.getElementById('registration-form');
-if (registrationForm) {
-    registrationForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const username = registrationForm.username.value.trim();
-        const password = registrationForm.password.value.trim();
-        const repeatPassword = registrationForm.repeat_password.value.trim();
-
-        if (registerUser(username, password, repeatPassword)) {
-            window.location.href = 'signin.html';
-        }
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Получаем ссылку на кнопку входа
-    const signinButton = document.getElementById('signin');
-
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-
-    if (isLoggedIn === 'true') {
-        signinButton.style.display = 'none'; // Скрываем ссылку "Вход"
+    } catch (error) {
+        console.error('Error checking auth status:', error);
     }
-});
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-    const signinButton = document.getElementById('signin');
+async function loginUser(username, password) {
+    try {
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+
+        const response = await fetch('/php/login.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+        
+        if (result.success) {
+            alert(result.message);
+            window.location.href = '/index.html';
+            return true;
+        } else {
+            alert(result.message);
+            return false;
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Произошла ошибка при входе');
+        return false;
+    }
+}
+
+async function registerUser(username, password, repeatPassword) {
+    try {
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+        formData.append('repeat_password', repeatPassword);
+
+        const response = await fetch('/php/register.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+        
+        if (result.success) {
+            alert(result.message);
+            window.location.href = '/signin.html';
+            return true;
+        } else {
+            alert(result.message);
+            return false;
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Произошла ошибка при регистрации');
+        return false;
+    }
+}
+
+async function logoutUser() {
+    try {
+        const response = await fetch('/php/logout.php', {
+            method: 'POST'
+        });
+
+        const result = await response.json();
+        
+        if (result.success) {
+            alert(result.message);
+            await checkAuthStatus(); // Обновляем статус после выхода
+            window.location.reload();
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Произошла ошибка при выходе');
+    }
+}
+
+// Добавляем обработчики событий
+document.addEventListener('DOMContentLoaded', async () => {
+    // Проверяем статус авторизации при загрузке страницы
+    await checkAuthStatus();
+
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const username = loginForm.username.value.trim();
+            const password = loginForm.password.value.trim();
+            await loginUser(username, password);
+        });
+    }
+
+    const registrationForm = document.getElementById('registration-form');
+    if (registrationForm) {
+        registrationForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const username = registrationForm.username.value.trim();
+            const password = registrationForm.password.value.trim();
+            const repeatPassword = registrationForm.repeat_password.value.trim();
+            await registerUser(username, password, repeatPassword);
+        });
+    }
+
     const logoutButton = document.getElementById('logout');
-
-    // Проверяем состояние входа
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-
-    if (isLoggedIn === 'true') {
-        signinButton.style.display = 'none'; // Скрываем кнопку "Вход"
-        logoutButton.style.display = 'inline'; // Показываем кнопку "Выход"
+    if (logoutButton) {
+        logoutButton.addEventListener('click', async function (event) {
+            event.preventDefault();
+            await logoutUser();
+        });
     }
-
-    // Логика выхода
-    logoutButton.addEventListener('click', () => {
-        localStorage.setItem('isLoggedIn', 'false');
-        alert('Вы успешно вышли из аккаунта!');
-        window.location.reload(); // Перезагружаем страницу
-    });
 });
