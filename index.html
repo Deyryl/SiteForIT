@@ -5,11 +5,14 @@
         <meta name="description" content="Кафедра О7 БГТУ ВОЕНМЕХ">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/styles.css">
+        <title>Кафедра О7</title>
     </head>
 
     <body>
         <div class="wrapper">
             <header>
+                <a id="signin" href="signin.html">Вход</a>
+                <a id="logout" href="#" style="display: none;">Выход</a>
                 <div class="header-container">
                     <div class="logo">
                         <img src="src/logo.svg" alt="Лого">
@@ -24,10 +27,9 @@
 
             <main>
                 <div class="main-container">
-                    <h2>Кафедра О7 «Информационные системы и программная инженерия»</h2>
                     <div class="main-text">
-                        <img src="src/main/picture1.png" alt="Капибара за компьютером" class="main-image" id="pic1">
-                        <p id="about-text">
+                        <h2>Кафедра О7 «Информационные системы и программная инженерия»</h2>
+                        <p>
                             В современном мире цифровых технологий кафедра
                             предлагает передовые  знания и навыки, необходимые для карьеры в IT-индустрии
                             Вы изучите современные языки программирования, научитесь разрабатывать сложные
@@ -36,11 +38,8 @@
                         </p>
                     </div>
 
-                    <div class="main-text">
-                        <img src="src/main/picture2.png" alt="Капибара с ноутбуком" class="main-image" id="pic2">
-                        <h2 id="prospects-h2">
-                            Перспективы выпускников кафедры О7: востребованные специалисты в области IT                
-                        </h2>
+                    <div class="main-text" id="main-text-2">
+                        <h2>Перспективы выпускников кафедры О7</h2>
                         <p class="prospects">
                             Начиная с 1995 г кафедра стала выпускающей по специальности 
                             «Автоматизированные системы обработки  информации и управления», 
@@ -59,19 +58,37 @@
                             направлениям кафедры. Объектами  профессиональной деятельности 
                             выпускников кафедры являются следующие  направления:
                         </p>
+                        <ul>
+                            <li>Технологии разработки программного обеспечения</li>
+                            <li>Информационная безопасность и интернет-технологии</li>
+                            <li>Разработка трансляторов искусственных языков</li>
+                            <li>Разработка пользовательского интерфейса</li>
+                            <li>Системы искусственного интеллекта</li>
+                            <li>Проектирование архитектуры программных средств</li>
+                        </ul>
+                    </div>
+                    <div id="subscribe">
+                        <h2>Подписка на новости</h2>
+                        <form id="subscribe-form">
+                            <input type="email" id="subscribe-email" name="subscribe-email" placeholder="Электронная почта" required>
+                            <button id="sub-btn" type="submit">Подписаться</button>
+                        </form>
+                        <div id="subscribe-response"></div>
                     </div>
                 </div>
             </main>
-                <footer>
-                    <div class="footer-container">
-                        <div class="footer-content">
-                            <p class="contacts">Контактная информация:</p>
-                            <p class="contact-item">Телефон: +7 (812) 495-76-20</p>
-                            <p class="contact-item">Электронная почта: <a href="mailto:admission@voenmeh.ru">admission@voenmeh.ru</a></p>
-                            <p class="contact-item">Адрес: Санкт-Петербург, ул. 1-я Красноармейская, д.1</p>
-                        </div>
+            <footer>
+                <div class="footer-container">
+                    <div class="footer-content">
+                        <p class="contacts">Контактная информация:</p>
+                        <p class="contact-item">Телефон: +7 (812) 495-76-20</p>
+                        <p class="contact-item">Электронная почта: <a href="mailto:admission@voenmeh.ru">admission@voenmeh.ru</a></p>
+                        <p class="contact-item">Адрес: Санкт-Петербург, ул. 1-я Красноармейская, д.1</p>
                     </div>
-                </footer>
+                </div>
+            </footer>
         </div>
+        <script src="js/sign.js"></script>
+        <script src="js/subscribe-news.js"></script>
     </body>
 </html>
